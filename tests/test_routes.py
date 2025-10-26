@@ -31,3 +31,12 @@ def test_list_by_category_route():
 def test_list_by_availability_route():
     response = client.get("/products/?available=true")
     assert response.status_code == 200
+
+
+@router.get("/products/{product_id}")
+def read_product(product_id: int):
+    db = SessionLocal()
+    product = db.query(Product).get(product_id)
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return product
