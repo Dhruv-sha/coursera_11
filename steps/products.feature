@@ -36,3 +36,21 @@ Feature: Product Search and Listing
     And I click the "Save" button
     Then I should see the text "12000" for product "Phone"
     And I should see the message "Product updated successfully"
+
+
+Feature: Product Management
+
+  Scenario: READING a Product
+    Given I open the product page
+    When I view the details for product "Phone"
+    Then I should see the text "Phone"
+    And I should see the text for "Price"
+    And I should see the text for "Category"
+    And I should see the text for "Availability"
+
+Background:
+  Given the following products exist
+    | name   | category     | price  | stock |
+    | Phone  | Electronics  | 10000  | 5     |
+    | Laptop | Electronics  | 50000  | 3     |
+
