@@ -22,3 +22,17 @@ Feature: Product Search and Listing
     Given I open the product page
     When I click the "List All Products" button
     Then I should see the text "Products List"
+
+  Scenario: DELETING a Product
+    Given I open the product page
+    When I click the "Delete" button for product "Phone"
+    Then I should not see the text "Phone"
+    And I should see the message "Product deleted successfully"
+
+  Scenario: UPDATING a Product
+    Given I open the product page
+    When I click the "Edit" button for product "Phone"
+    And I update the "Price" field to "12000"
+    And I click the "Save" button
+    Then I should see the text "12000" for product "Phone"
+    And I should see the message "Product updated successfully"
